@@ -80,9 +80,8 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
 3. **Create & Activate a Virtual Environment** (recommended)
 
    ```bash
-   # Linux/macOS
-   python3 -m venv venv
-   source venv/bin/activate
+   python3 -m venv my-venv
+   source my-venv/bin/activate
    ```
 
 4. **Install Dependencies**
@@ -108,19 +107,20 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
 ### Basic Capture (all traffic)
 
 ```bash
-sudo python sniffer.py -i eth0
+sudo my-venv/bin/python sniffer.py -i wlan0
+sudo my-venv/bin/python sniffer.py -i eth0
 ```
 
 ### Apply a BPF Filter
 
 ```bash
-sudo python3 sniffer.py -i wlan0 -f "tcp port 443"
+sudo my-venv/bin/python sniffer.py -i wlan0 -f "tcp port 443"
 ```
 
 ### Exclude SSH Traffic
 
 ```bash
-sudo python3 sniffer.py -i any -f "not port 22"
+sudo my-venv/bin/python sniffer.py -i wlan0 -f "not port 22"
 ```
 
 Press **Ctrl+C** to stop capture and view export summary.
