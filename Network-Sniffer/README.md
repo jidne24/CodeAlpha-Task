@@ -42,12 +42,6 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
   * Source/destination IP or port filters via BPF expression
   * Built‑in validation of filter syntax
 
-* **Cross‑Platform Compatibility**
-
-  * **Linux/macOS**: run under `sudo` or as root
-  * **Windows**: run PowerShell/CMD as Administrator
-  * Detects and warns on insufficient privileges
-
 * **Robust Error Handling**
 
   * Missing GeoIP DB, write errors, invalid interface or filter
@@ -61,17 +55,17 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
 * **Python 3.7+**
 * **pip** package manager
 * **MaxMind GeoLite2‑City.mmdb** (place under `GeoIP/GeoLite2‑City.mmdb`)
-* **Administrator/Root** privileges
+* **Root** privileges(sudo)
 
 ---
 
-## Installation
+## Installation on Linux
 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/jidne24/Network-Sniffer.git
-   cd Network-Sniffer
+   git clone https://github.com/jidne24/CodeAlpha-Task.git
+   cd CodeAlpha-Task/Network-Sniffer
    ```
 
 2. **MaxMind GeoLite2 Database**
@@ -80,7 +74,7 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
    * Otherwise, download it from [Google Drive](https://drive.google.com/file/d/1QIzOCBCYsc2mAnJSbZI--MWcXZ-YGfG9/view?usp=sharing) and place it at:
 
      ```
-     Network-Sniffer/GeoIP/GeoLite2-City.mmdb
+     CodeAlpha-Task/Network-Sniffer/GeoIP/GeoLite2-City.mmdb
      ```
 
 3. **Create & Activate a Virtual Environment** (recommended)
@@ -89,10 +83,6 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
    # Linux/macOS
    python3 -m venv venv
    source venv/bin/activate
-
-   # Windows (PowerShell)
-   python -m venv venv
-   .\venv\Scripts\Activate.ps1
    ```
 
 4. **Install Dependencies**
@@ -118,11 +108,7 @@ A high‑performance, real‑time network packet sniffer and analyzer built in P
 ### Basic Capture (all traffic)
 
 ```bash
-# Linux/macOS (with sudo)
-sudo python3 sniffer.py -i eth0
-
-# Windows (run as Admin)
-python sniffer.py -i Ethernet0
+sudo python sniffer.py -i eth0
 ```
 
 ### Apply a BPF Filter
@@ -143,14 +129,6 @@ Press **Ctrl+C** to stop capture and view export summary.
 
 ## Troubleshooting
 
-| Issue                   | Solution                                                         |
-| ----------------------- | ---------------------------------------------------------------- |
-| **Permission denied**   | • Linux: prepend `sudo`<br>• Windows: run shell as Administrator |
-| **Interface not found** | List interfaces:                                                 |
-
-````bash
-python3 <<<'from scapy.all import get_if_list; print(get_if_list())'
-````
 ````
 | **Invalid BPF filter**             | Verify syntax or remove special characters<br>Use simple tests first     |
 | **Missing GeoIP database error**   | Ensure `GeoIP/GeoLite2-City.mmdb` exists and is readable                |
